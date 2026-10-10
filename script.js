@@ -11,11 +11,9 @@ class Library {
     constructor() {
         this.books = [];
     }
-
     addBook(book) {
         this.books.push(book);
     }
-
     checkOut(title) {
         const book = this.books.find(book => book.title === title);
 
@@ -23,7 +21,6 @@ class Library {
             book.isCheckedOut = true;
         }
     }
-
     checkIn(title) {
         const book = this.books.find(book => book.title === title);
 
@@ -31,25 +28,20 @@ class Library {
             book.isCheckedOut = false;
         }
     }
-
     getAvailableBooks() {
         return this.books.filter(book => !book.isCheckedOut);
     }
-
     getBooksByAuthor(author) {
         return this.books.filter(book => book.author === author);
     }
-
     getBookTitles() {
         return this.books.map(book => book.title);
     }
-
     countAvailableBooks() {
         return this.books.reduce((count, book) => {
             if (!book.isCheckedOut) {
                 count++;
             }
-
             return count;
         }, 0);
     }
@@ -72,26 +64,16 @@ library.addBook(book3);
 library.addBook(book4);
 
 
-
 library.checkOut("The Hobbit");
 
-
-
-console.log("Available books:");
 console.log(library.getAvailableBooks());
 
-console.log("Books by J.R.R. Tolkien:");
 console.log(library.getBooksByAuthor("J.R.R. Tolkien"));
 
-console.log("All book titles:");
 console.log(library.getBookTitles());
 
-console.log("Number of available books:");
 console.log(library.countAvailableBooks());
-
-
 
 library.checkIn("The Hobbit");
 
-console.log("Available books after check in:");
 console.log(library.getAvailableBooks());
